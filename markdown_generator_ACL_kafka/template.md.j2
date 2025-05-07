@@ -1,0 +1,27 @@
+# Topic con ACL per il principal {{ principal }}
+
+## Lista topics
+
+{% for topic in topics %}
+* {{ topic }}
+{% endfor %}
+
+<br>
+Totale topic: {{ topics | length }}
+
+<br>
+
+***
+
+## Lista delle ACL
+
+{% for acl in acls %}
+Current ACLs for resource `ResourcePattern(resourceType={{ acl.resource_type }}, name={{ acl.name }}, patternType={{ acl.pattern_type }})`:
+    {% for perm in acl.permissions %}
+        (principal={{ perm.principal }}, host={{ perm.host }}, operation={{ perm.operation }}, permissionType={{ perm.permission_type }})
+    {% endfor %}
+{% endfor %}
+
+
+
+

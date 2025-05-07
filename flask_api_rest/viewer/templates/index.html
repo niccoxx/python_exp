@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenuto delle Directory</title>
+</head>
+<body>
+    <h1>Contenuto delle Directory</h1>
+    
+    {% for directory, files in directories_content.items() %}
+        <h2>Directory: {{ directory }}</h2>
+        
+        <ul>
+            {% for file in files %}
+            <li><a href="{{ url_for('view_file', directory_name=directory, filename=file) }}">{{ file }}</a></li>
+            {% else %}
+            <li>Nessun file trovato.</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>
